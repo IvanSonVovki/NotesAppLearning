@@ -30,12 +30,9 @@ import com.ivanshulin.notesappcompousemvvm.navigation.NavRoute
 import com.ivanshulin.notesappcompousemvvm.ui.theme.NotesAppCompouseMVVMTheme
 
 @Composable
-fun MainScreen(navController: NavHostController) {
+fun MainScreen(navController: NavHostController, viewModel: MainViewModel) {
 
-    val context = LocalContext.current
-    val mViewModel: MainViewModel =
-        viewModel(factory = MainViewModelFactory(context.applicationContext as Application))
-
+    val notes = viewModel.readAllNotes().observeAsState(listOf()).value
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = {
@@ -50,35 +47,11 @@ fun MainScreen(navController: NavHostController) {
         }
     ) {
 
-        /*  Column() {
-              NoteItem(
-                  title = "Note 1",
-                  subtitles = "Subtitle for note 1",
-                  navController = navController
-              )
-              NoteItem(
-                  title = "Note 2",
-                  subtitles = "Subtitle for note 2",
-                  navController = navController
-              )
-              NoteItem(
-                  title = "Note 3",
-                  subtitles = "Subtitle for note 3",
-                  navController = navController
-              )
-              NoteItem(
-                  title = "Note 4",
-                  subtitles = "Subtitle for note 4",
-                  navController = navController
-              )
-          }
-        
         LazyColumn {
-            items(notes) {
-                note ->
+            items(notes) { note ->
                 NoteItem(note = note, navController = navController)
             }
-        }*/
+        }
     }
 }
 
@@ -114,6 +87,10 @@ fun NoteItem(note: Note, navController: NavHostController) {
 fun PrevMainScreen() {
     NotesAppCompouseMVVMTheme()
     {
-        MainScreen(navController = rememberNavController())
+        val context = LocalContext.current
+        val mViewModel: MainViewModel =
+            viewModel(factory = MainViewModelFactory(context.applicationContext as Application))
+
+        MainScreen(navController = rememberNavController(), viewModel = mViewModel)
     }
 }
