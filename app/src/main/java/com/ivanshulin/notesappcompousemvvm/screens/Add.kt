@@ -25,6 +25,7 @@ import com.ivanshulin.notesappcompousemvvm.MainViewModelFactory
 import com.ivanshulin.notesappcompousemvvm.model.Note
 import com.ivanshulin.notesappcompousemvvm.navigation.NavRoute
 import com.ivanshulin.notesappcompousemvvm.ui.theme.NotesAppCompouseMVVMTheme
+import com.ivanshulin.notesappcompousemvvm.utils.Constans
 
 @Composable
 fun AddScreen(navController: NavHostController, viewModel: MainViewModel) {
@@ -39,7 +40,7 @@ fun AddScreen(navController: NavHostController, viewModel: MainViewModel) {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                text = "Add new note",
+                text = Constans.Keys.ADD_NEW_NOTE,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(vertical = 8.dp)
@@ -51,7 +52,7 @@ fun AddScreen(navController: NavHostController, viewModel: MainViewModel) {
                     title = it
                     isButtonEnabled = title.isNotEmpty() && subtitle.isNotEmpty()
                 },
-                label = { Text(text = "Note title") },
+                label = { Text(text = Constans.Keys.NOTE_TITLE) },
                 isError = title.isEmpty()
             )
             OutlinedTextField(
@@ -60,7 +61,7 @@ fun AddScreen(navController: NavHostController, viewModel: MainViewModel) {
                     subtitle = it
                     isButtonEnabled = title.isNotEmpty() && subtitle.isNotEmpty()
                 },
-                label = { Text(text = "Note subtitle") },
+                label = { Text(text = Constans.Keys.NOTE_SUBTITLES) },
                 isError = subtitle.isEmpty()
             )
             Button(
@@ -73,7 +74,7 @@ fun AddScreen(navController: NavHostController, viewModel: MainViewModel) {
 
                 }
             ) {
-                Text(text = "Add note")
+                Text(text = Constans.Keys.ADD_NOTE)
             }
         }
     }

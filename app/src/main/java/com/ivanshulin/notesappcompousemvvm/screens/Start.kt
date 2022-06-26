@@ -18,6 +18,7 @@ import com.ivanshulin.notesappcompousemvvm.MainViewModel
 import com.ivanshulin.notesappcompousemvvm.MainViewModelFactory
 import com.ivanshulin.notesappcompousemvvm.navigation.NavRoute
 import com.ivanshulin.notesappcompousemvvm.ui.theme.NotesAppCompouseMVVMTheme
+import com.ivanshulin.notesappcompousemvvm.utils.Constans
 import com.ivanshulin.notesappcompousemvvm.utils.TYPE_FIREBASE
 import com.ivanshulin.notesappcompousemvvm.utils.TYPE_ROOM
 
@@ -34,7 +35,7 @@ fun StartScreen(navController: NavHostController, viewModel: MainViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = "What will we use?")
+            Text(text = Constans.Keys.WHAT_WILL_WE_USE)
             Button(
                 onClick = {
                     mViewModel.initDataBase(TYPE_ROOM) {
@@ -46,7 +47,7 @@ fun StartScreen(navController: NavHostController, viewModel: MainViewModel) {
                     .width(200.dp)
                     .padding(vertical = 8.dp)
             ) {
-                Text(text = "Room database")
+                Text(text = Constans.Keys.ROOM_DATABASE)
             }
 
             Button(
@@ -61,7 +62,7 @@ fun StartScreen(navController: NavHostController, viewModel: MainViewModel) {
                     .width(200.dp)
                     .padding(vertical = 8.dp)
             ) {
-                Text(text = "Firebase database")
+                Text(text = Constans.Keys.FIREBASE_DATABASE)
             }
         }
     }
